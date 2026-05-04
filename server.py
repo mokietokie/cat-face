@@ -26,15 +26,18 @@ class ImageRequest(BaseModel):
 
 @app.post("/analyze")
 def analyze(req: ImageRequest):
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[
-            {
-                "parts": [
-                    {"text": "이 사진 속 고양이의 귀, 눈, 꼬리를 보고 지금 기분을 집사 입장에서 재밌게 분석해줘. 2~3문장으로 짧게."},
-                    {"inline_data": {"mime_type": "image/jpeg", "data": req.image}},
-                ]
-            }
-        ],
-    )
-    return {"result": response.text}
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=[
+                {
+                    "parts": [
+                        {"text": "이 사진 속 고양이의 귀, 눈, 꼬리를 보고 지금 기분을 집사 입장에서 재밌게 분석해줘. 2~3문장으로 짧게."},
+                        {"inline_data": {"mime_type": "image/jpeg", "data": req.image}},
+                    ]
+                }
+            ],
+        )
+        return {"result": response.text}
+    except Exception as e:
+        return {"error": str(e)}

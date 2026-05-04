@@ -86,10 +86,14 @@
           body: JSON.stringify({ image: base64 }),
         });
         const data = await res.json();
-        result.textContent = '🐱 ' + data.result;
+        if (data.error) {
+          result.textContent = '⚠️ ' + data.error;
+        } else {
+          result.textContent = '🐱 ' + data.result;
+        }
         result.style.display = 'block';
       } catch (e) {
-        result.textContent = '오류가 발생했습니다. 다시 시도해주세요.';
+        result.textContent = '⚠️ 네트워크 오류. 다시 시도해주세요.';
         result.style.display = 'block';
       }
 
