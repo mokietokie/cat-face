@@ -3,3 +3,5 @@ opencv-python
 pillow
 python-dotenv
 streamlit
+fastapi
+uvicorn[standard]
