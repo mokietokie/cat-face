@@ -1,0 +1,5 @@
+venv/
+.env
+captured.jpg
+__pycache__/
+*.pyc
