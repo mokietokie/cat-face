@@ -1,7 +1,5 @@
-google-genai
-opencv-python
-pillow
-python-dotenv
-streamlit
-fastapi
-uvicorn[standard]
+google-genai       # Gemini API 클라이언트
+opencv-python      # 데스크탑 카메라 캡처 (main.py)
+python-dotenv      # .env 파일에서 API 키 로드
+fastapi            # 웹 서버 프레임워크
+uvicorn[standard]  # FastAPI ASGI 서버 (uvicorn server:app --reload)
